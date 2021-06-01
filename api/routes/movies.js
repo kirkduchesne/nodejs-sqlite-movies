@@ -11,15 +11,16 @@ let db = new sqlite3.Database('./db/movies.db', sqlite3.OPEN_READONLY, (err) => 
 });
 
 router.get('/', (req, res) => {
-    db.all("SELECT Title FROM movies LIMIT 50", (err, movies) => {
+    const sql = `SELECT title,
+                imdbId, genres,
+                releaseDate, budget
+                FROM movies LIMIT 50`;
+    db.all(sql, (err, movies) => {
         if (err) {
             return console.error(err.message);
         }
         if (movies) {
-            movies.forEach((movie) => {
-                console.log(movie.title);
-            })
-            res.json({ movies });
+                res.send(movies);
         } else if (!movies) {
             res.send('No movie titles have been found.');
         }
@@ -28,9 +29,9 @@ router.get('/', (req, res) => {
 
 router.get('/:movieId', (req, res) => {
     const sql = `SELECT movieId id,
-            title title
-           FROM movies
-           WHERE movieId = ?`;
+                title title
+                FROM movies
+                WHERE movieId = ?`;
     const movieId = req.params.movieId;
     db.get(sql, [movieId], (err, row) => {
         if (err) {
