@@ -32,8 +32,8 @@ app.listen(PORT, () => {
     console.log(`Listening on PORT: ${PORT}`);
 });
 
-/* Unable to resolve kenx issues */
-// Kenx provides better organization like shown below
+/* Unable to resolve knex issues */
+// Knex provides better organization like shown below
 
 // const moviesDB = require('./utils/moviesUtility')
 
