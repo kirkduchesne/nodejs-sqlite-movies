@@ -1,14 +1,14 @@
 {
   "name": "imdb-project",
   "version": "1.0.0",
-  "description": "node.js imdb app",
+  "description": "nodejs-sqlite-movies",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "Kirk Duchesne",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
     "express": "^4.17.1",
