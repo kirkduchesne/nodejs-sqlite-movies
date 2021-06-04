@@ -1,8 +1,8 @@
 const knex = require('../knex/moviesKnex');
 
-function getMovies() {
+/* function getMovies() {
     return knex('movies').select('*');
-}
+} */
 
 const getMovies = () => knex('movies').select('*');
 
