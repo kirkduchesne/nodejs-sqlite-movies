@@ -29,7 +29,8 @@ router.get('/', (req, res) => {
 
 router.get('/:movieId', (req, res) => {
     const sql = `SELECT movieId id,
-                title title
+                title title,
+                overview overview
                 FROM movies
                 WHERE movieId = ?`;
     const movieId = req.params.movieId;
@@ -39,7 +40,7 @@ router.get('/:movieId', (req, res) => {
         }
         if (row) {
             console.log(row.id, row.title)
-            res.status(200).json({'id': row.id, 'title': row.title});
+            res.status(200).json({'id': row.id, 'title': row.title, 'overview': row.overview});
         } else if (!row) {
             console.log(`No movie found with the id ${movieId}`);
             res.send(`No movie found with the id ${movieId}`);
